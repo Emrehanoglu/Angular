@@ -1,4 +1,6 @@
 import { Component } from "@angular/core";
+import { ToDoItem } from "./todoitem";
+import { Model } from "./model";
 
 @Component({
     selector: 'todo',
@@ -10,15 +12,24 @@ export class ToDoComponent{
 
     constructor() { }
 
-    private name = "Emre"
-    // items = ["item1","item2","item3"]
-    items = [
-        {id:1 ,description : "Kahvaltı",action : "Yes"},
-        {id:2 ,description : "Spor",action : "Yes"},
-        {id:3 ,description : "Alışveriş",action : "No"}
-    ]
+    model = new Model()
+
+    // private name = "Emre"
+    // // items = ["item1","item2","item3"]
+    // items:ToDoItem[] = [
+    //     // {description : "Kahvaltı",action : "Yes"},
+    //     // {description : "Spor",action : "Yes"},
+    //     // {description : "Alışveriş",action : "No"}
+    //     // new ToDoItem("Kahvaltı","Yes"),
+    //     // new ToDoItem("Spor","Yes"),
+    //     // new ToDoItem("KaAlışverişhvaltı","No")
+    // ]
 
     getName(){
-        return this.name
+        return this.model.name
+    }
+
+    getItems(){
+        return this.model.items
     }
 }
