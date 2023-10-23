@@ -13,6 +13,6 @@ import { ToDoComponent } from './todo.component';
     BrowserModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [ToDoComponent]
 })
 export class AppModule { }
