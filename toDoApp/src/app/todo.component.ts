@@ -8,4 +8,17 @@ import { Component } from "@angular/core";
 
 export class ToDoComponent{
 
+    constructor() { }
+
+    private name = "Emre"
+    // items = ["item1","item2","item3"]
+    items = [
+        {id:1 ,description : "Kahvaltı",action : "Yes"},
+        {id:2 ,description : "Spor",action : "Yes"},
+        {id:3 ,description : "Alışveriş",action : "No"}
+    ]
+
+    getName(){
+        return this.name
+    }
 }
