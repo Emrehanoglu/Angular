@@ -6,8 +6,8 @@
             </h3>
 
             <div class="input-group mb-3">
-                <input type="text" class="form-control">
-                <button class="btn btn-outline-primary">Add</button>
+                <input #txtItem type="text" class="form-control" (keyup.enter)="addItem(txtItem.value); txtItem.value=''">
+                <button class="btn btn-outline-primary" (click)="addItem(txtItem.value); txtItem.value=''">Add</button>
             </div>
 
             <div class="form-check mb-3">

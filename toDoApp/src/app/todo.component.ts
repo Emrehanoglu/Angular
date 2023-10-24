@@ -14,16 +14,13 @@ export class ToDoComponent{
 
     model = new Model()
 
-    // private name = "Emre"
-    // // items = ["item1","item2","item3"]
-    // items:ToDoItem[] = [
-    //     // {description : "Kahvaltı",action : "Yes"},
-    //     // {description : "Spor",action : "Yes"},
-    //     // {description : "Alışveriş",action : "No"}
-    //     // new ToDoItem("Kahvaltı","Yes"),
-    //     // new ToDoItem("Spor","Yes"),
-    //     // new ToDoItem("KaAlışverişhvaltı","No")
-    // ]
+    addItem(txtItem:any){
+        if(txtItem != ""){
+            this.model.items.push({description:txtItem , action:"no"})
+        }else{
+            alert("Bilgi Giriniz")
+        }
+    }
 
     getName(){
         return this.model.name
