@@ -6,8 +6,10 @@
             </h3>
 
             <div class="input-group mb-3">
-                <input #txtItem type="text" class="form-control" (keyup.enter)="addItem(txtItem.value); txtItem.value=''">
-                <button class="btn btn-outline-primary" (click)="addItem(txtItem.value); txtItem.value=''">Add</button>
+                <input [(ngModel)]="inputText" type="text" class="form-control" (keyup.enter)="addItem()">
+                <button (click)="addItem()"
+                class="btn" 
+                [class]="getBtnClasses()">Add</button>
             </div>
 
             <div class="form-check mb-3">
@@ -33,7 +35,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let item of getItems(); let i = index"><!-- her elemana 0 dan başlayarak index değeri atar -->
+                        <tr *ngFor="let item of getItems(); let i = index" [class.bg-primary]="item.action == true" [class.bg-danger]="item.action == false"><!-- her elemana 0 dan başlayarak index değeri atar -->
                             <td>{{i+1}}</td>
                             <td>{{item.description}}</td>
                             <td>

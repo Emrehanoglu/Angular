@@ -11,14 +11,16 @@ import { Model } from "./model";
 export class ToDoComponent{
 
     displayAll : boolean = false
+    inputText : string = ""
 
     constructor() { }
 
     model = new Model()
 
-    addItem(txtItem:any){
-        if(txtItem != ""){
-            this.model.items.push({description:txtItem , action:false})
+    addItem(){
+        if(this.inputText != ""){
+            this.model.items.push({description:this.inputText , action:false})
+            this.inputText = ""
         }else{
             alert("Bilgi Giriniz")
         }
@@ -38,5 +40,13 @@ export class ToDoComponent{
 
     displayCount(){
         return this.model.items.filter(item => item.action).length
+    }
+
+    getBtnClasses(){
+        return {
+            'disabled' : this.inputText.length==0, 
+            'btn-secondary' : this.inputText.length==0,
+            'btn-primary' : this.inputText.length > 0
+        }
     }
 }
