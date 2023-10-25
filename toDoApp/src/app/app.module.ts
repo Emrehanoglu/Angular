@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { ToDoComponent } from './todo.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { ToDoComponent } from './todo.component';
     ToDoComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, //uygulamanın tarayıcıda çalışması için gereken module
+    FormsModule // NgModule ile birlikte çalışan yardımcı module
   ],
   providers: [],
   bootstrap: [ToDoComponent]

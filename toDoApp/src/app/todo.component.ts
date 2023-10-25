@@ -10,13 +10,15 @@ import { Model } from "./model";
 
 export class ToDoComponent{
 
+    displayAll : boolean = false
+
     constructor() { }
 
     model = new Model()
 
     addItem(txtItem:any){
         if(txtItem != ""){
-            this.model.items.push({description:txtItem , action:"no"})
+            this.model.items.push({description:txtItem , action:false})
         }else{
             alert("Bilgi Giriniz")
         }
@@ -27,6 +29,10 @@ export class ToDoComponent{
     }
 
     getItems(){
-        return this.model.items
+        if(this.displayAll === true){
+            return this.model.items
+        }else{
+            return this.model.items.filter(item => !item.action)
+        }
     }
 }
