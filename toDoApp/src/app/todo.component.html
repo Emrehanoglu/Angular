@@ -15,7 +15,7 @@
                 <label for="displayAll" class="form-check-label">Hepsini Göster</label>
             </div>
 
-            <table class="table table-bordered">
+            <table class="table table-bordered" *ngIf="getItems().length > 0">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -27,11 +27,18 @@
                     <tr *ngFor="let item of getItems(); let i = index"><!-- her elemana 0 dan başlayarak index değeri atar -->
                         <td>{{i+1}}</td>
                         <td>{{item.description}}</td>
-                        <td>{{item.action}}</td>
+                        <td>
+                            <div *ngIf="item.action">Yes</div>
+                            <div *ngIf="!item.action">No</div>
+                        </td>
                         <td> <input type="checkbox" [(ngModel)]="item.action" name="" id=""></td>
                     </tr>
                 </tbody>
             </table>
+
+            <div class="alert alert-warning" *ngIf="getItems().length == 0">
+                Listede eleman yok
+            </div>
         </div>
     </div>
 </div>
