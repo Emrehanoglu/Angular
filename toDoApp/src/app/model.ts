@@ -6,10 +6,6 @@ export class Model{
 
     constructor(){
         this.name = "Emre"
-        this.items = [
-            {description : "Kahvaltı",action : true},
-            {description : "Spor",action : true},
-            {description : "Alışveriş",action : false}
-        ]
+        this.items = []
     }
 }
