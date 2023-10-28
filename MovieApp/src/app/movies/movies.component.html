@@ -3,6 +3,11 @@
 
     <div class="alert alert-success">{{movies.length}} adet film bulundu.</div>
 
+    <div class="mb-3">
+        <input type="text" class="form-control" [(ngModel)]="filterText" placeholder="Search...">
+        <small class="text-muted" *ngIf="filterText > ''">Aradığınız kelime : {{filterText}}</small>
+    </div>
+
     <ng-template [ngTemplateOutlet]="movieList1"></ng-template> <!-- template yapısı cağırma yöntemidir. -->
 </div>
 
@@ -14,7 +19,7 @@
 <!-- <app-movie *ngFor="let item of movies"></app-movie> -->
 
 <ng-template #movieList1>
-    <div class="card mb-3" *ngFor="let item of movies">
+    <div class="card mb-3" *ngFor="let item of movies | movieFilter: filterText">
         <div class="row">
             <div class="col-md-3">
                 <img src="/assets/img/{{item.imageUrl}}" class="img-fluid rounded-started" alt=""> <!-- img-fluid : resim kendini 3 lü kolona sığdırsın -->
