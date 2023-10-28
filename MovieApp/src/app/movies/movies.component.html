@@ -3,9 +3,7 @@
 
     <div class="alert alert-success">{{movies.length}} adet film bulundu.</div>
 
-    <ng-template [ngTemplateOutlet]="movieList2" [ngTemplateOutletContext]="{movies: popularMovies}"></ng-template> <!-- component içerisinde atamasını yapmıstım -->
     <ng-template [ngTemplateOutlet]="movieList1"></ng-template> <!-- template yapısı cağırma yöntemidir. -->
-    <ng-template [ngTemplateOutlet]="movieList3" [ngTemplateOutletContext]="{movies: movieRepository.getMovies()}"></ng-template> <!-- moviee.repository.ts 'den almıs oldum' -->
 </div>
 
 <ng-template #no_movies> 
@@ -23,40 +21,9 @@
             </div>
             <div class="col-md-9">
                 <div class="card-body">
-                    <h2 class="card-title">{{item.title}}</h2>
+                    <h2 class="card-title">{{item.title | titlecase}}</h2> <!-- titlecase ile title 'lar büyük harfle başlar -->
                     <p class="card-text">{{item.description}}</p>
-                    <button class="btn btn-sm btn-outline-primary">Details</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</ng-template>
-
-<ng-template #movieList2 let-filmler="movies">
-    <div class="row row-cols-1 row-cols-3 g-4 mb-3">
-        <div class="col" *ngFor="let item of filmler">
-            <div class="card h-100">
-                <img src="/assets/img/{{ item.imageUrl }}" class="card-img-top" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">{{ item. title}}</h5>
-                    <p class="card-text">{{ item.description }}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</ng-template>
-
-<ng-template #movieList3 let-populerFilms="movies">
-    <h2>Popüler Filmler</h2>
-    <div class="card mb-3" *ngFor="let item of populerFilms">
-        <div class="row">
-            <div class="col-md-3">
-                <img src="/assets/img/{{item.imageUrl}}" class="img-fluid rounded-started" alt=""> <!-- img-fluid : resim kendini 3 lü kolona sığdırsın -->
-            </div>
-            <div class="col-md-9">
-                <div class="card-body">
-                    <h2 class="card-title">{{item.title}}</h2>
-                    <p class="card-text">{{item.description}}</p>
+                    <p class="card-text">{{item.datePublished | date: 'dd/MM/y'}}</p> <!-- tarih formatını yıl/ay/gün şeklinde düzenler -->
                     <button class="btn btn-sm btn-outline-primary">Details</button>
                 </div>
             </div>
