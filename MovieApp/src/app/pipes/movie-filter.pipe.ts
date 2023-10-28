@@ -16,5 +16,4 @@ export class MovieFilterPipe implements PipeTransform {
     return filterText? movies.filter((m: Movie) => m.title.toLowerCase().indexOf(filterText) !== -1 || 
     m.description.toLowerCase().indexOf(filterText)  !== -1) : movies
   }
-
 }
