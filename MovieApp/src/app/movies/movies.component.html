@@ -22,7 +22,7 @@
             <div class="col-md-9">
                 <div class="card-body">
                     <h2 class="card-title">{{item.title | titlecase}}</h2> <!-- titlecase ile title 'lar büyük harfle başlar -->
-                    <p class="card-text">{{item.description}}</p>
+                    <p class="card-text">{{item.description |summary: 10}}</p>
                     <p class="card-text">{{item.datePublished | date: 'dd/MM/y'}}</p> <!-- tarih formatını yıl/ay/gün şeklinde düzenler -->
                     <button class="btn btn-sm btn-outline-primary">Details</button>
                 </div>
