@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from '../models/movie';
-import { MovieRepository } from '../models/movie.repository';
 import { AlertifyService } from '../services/alertify.service';
-import { HttpClient } from '@angular/common/http';
+import { MovieService } from '../services/movie.service';
 
 
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
-  styleUrls: ['./movies.component.css']
+  styleUrls: ['./movies.component.css'],
+  providers: [MovieService]
 })
 export class MoviesComponent implements OnInit {
   title : string
@@ -19,7 +19,7 @@ export class MoviesComponent implements OnInit {
 
   filterText:string ="";
 
-  constructor(private alertify:AlertifyService, private http:HttpClient) { 
+  constructor(private alertify:AlertifyService, private movieService:MovieService) { 
     /* this.movieRepository = new MovieRepository()
     this.movies = this.movieRepository.getMovies() */
     this.title = "Film Listesi"
@@ -27,7 +27,7 @@ export class MoviesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get<Movie[]>("http://localhost:3000/movies").subscribe(data => {
+    this.movieService.getMovies().subscribe(data => {
       this.movies = data
       this.filteredMovies = this.movies
     })
