@@ -1,0 +1,29 @@
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import './style.css';
+
+//observable
+const observable = new Observable<string>((subscribe) => {
+  subscribe.next('1');
+  subscribe.next('2');
+  subscribe.next(Math.random().toString());
+});
+
+observable.subscribe((data) => console.log(data));
+observable.subscribe((data) => console.log(data));
+
+//subject
+const subject = new Subject<number>();
+
+subject.next(2);
+
+subject.subscribe((data) => console.log(data));
+
+subject.next(44);
+
+//BehaviourSubject
+var behSub = new BehaviorSubject<string>('-1');
+behSub.next('*2');
+
+behSub.subscribe((data) => console.log(data));
+
+behSub.next('-3');
