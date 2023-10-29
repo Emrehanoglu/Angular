@@ -11,7 +11,11 @@ export class MovieService{
 
     constructor(private http:HttpClient){}
 
-    getMovies() : Observable<Movie[]>{
-        return this.http.get<Movie[]>(this.url)
+    getMovies(categorId:number) : Observable<Movie[]>{
+        let newUrl = this.url
+        if(categorId){
+            newUrl += '?categoryId=' + categorId
+        }        
+        return this.http.get<Movie[]>(newUrl)
     }
 }

@@ -1,9 +1,11 @@
 <div class="list-group">
     <a class="list-group-item list-group-item-action"
+    routerLink="movies" 
     (click)="selectCategory()"
     [class.active]="displayAll">Tüm Kategoriler</a>
 
     <a class="list-group-item list-group-item-action" 
+    routerLink="movies/category/{{item.id}}"
     *ngFor="let item of categories"
     (click)="selectCategory(item)"
     [class.active]="!displayAll && selectedCategory.id == item.id">{{item.name}}</a>
