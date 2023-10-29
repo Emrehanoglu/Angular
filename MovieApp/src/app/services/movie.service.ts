@@ -7,7 +7,7 @@ import { Movie } from "../models/movie"
 
 export class MovieService{
 
-    url = "http://localhost:3000/movies"
+    url = 'http://localhost:3000/movies'
 
     constructor(private http:HttpClient){}
 
