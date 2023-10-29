@@ -12,6 +12,7 @@
         {"id":2, "name":"Romantik"},
         {"id":3, "name":"Komedi"},
         {"id":4, "name":"Dram"},
-        {"id":5, "name":"Savaş"}
+        {"id":5, "name":"Savaş"},
+        {"id":5, "name":"Fantastik"}
     ]
 }
