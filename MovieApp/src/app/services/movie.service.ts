@@ -18,4 +18,8 @@ export class MovieService{
         }        
         return this.http.get<Movie[]>(newUrl)
     }
+
+    getMovieById(movieId:number):Observable<Movie>{
+        return this.http.get<Movie>(this.url + '/' + movieId)
+    } 
 }
