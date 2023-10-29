@@ -18,6 +18,7 @@ export class MoviesComponent implements OnInit {
   /* movieRepository: MovieRepository */
 
   filterText:string ="";
+  errorMessage:any 
 
   constructor(private alertify:AlertifyService, private movieService:MovieService) { 
     /* this.movieRepository = new MovieRepository()
@@ -30,7 +31,7 @@ export class MoviesComponent implements OnInit {
     this.movieService.getMovies().subscribe(data => {
       this.movies = data
       this.filteredMovies = this.movies
-    })
+    },error => this.errorMessage = error)
   }
 
   onInputChange() {
