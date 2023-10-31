@@ -4,7 +4,7 @@ import { Category } from '../models/category';
 import { MovieService } from '../services/movie.service';
 import { Router } from '@angular/router';
 import { AlertifyService } from '../services/alertify.service';
-import { FormControl, FormGroup, NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-movie-create',
@@ -28,10 +28,10 @@ export class MovieCreateComponent implements OnInit {
   }
 
   movieForm = new FormGroup({
-    title: new FormControl('film adı'),
-    description: new FormControl('acıklama'),
-    imageUrl: new FormControl('1.jpeg'),
-    categoryId: new FormControl('1')
+    title: new FormControl('',[Validators.required,Validators.minLength(5)]),
+    description: new FormControl('',[Validators.required]),
+    imageUrl: new FormControl('',[Validators.required]),
+    categoryId: new FormControl('',[Validators.required])
   })  
 
   clearForm(){

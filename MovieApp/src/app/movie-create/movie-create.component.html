@@ -4,18 +4,20 @@
     <div class="mb-3">
         <label for="title" class="form-label">Title</label>
         <input type="text" class="form-control" name="title" formControlName="title">
-        <!-- <div class="alert alert-danger" *ngIf="title.invalid && title.touched">
-            <p *ngIf="title.errors.required">Gerekli alan</p>
-            <p *ngIf="title.errors.minlength">Minimum 5 karakter girilmelidir</p>
-        </div>  -->
+        <div class="alert alert-danger" *ngIf="movieForm.get('title').invalid && movieForm.get('title').touched">
+            <p *ngIf="movieForm.get('title').errors.required">Gerekli alan</p>
+            <p *ngIf="movieForm.get('title').errors.minlength">Minimum 5 karakter girilmelidir</p>
+        </div> 
     </div>
     <div class="mb-3">
         <label for="description" class="form-label">Description</label>
         <textarea class="form-control" name="description" formControlName="description"></textarea>
+        <div class="alert alert-danger" *ngIf="movieForm.get('description').invalid && movieForm.get('description').touched">Gerekli alan</div>
     </div>
     <div class="mb-3">
         <label for="imageUrl" class="form-label">Image URL</label>
         <input type="text" class="form-control" name="imageUrl" formControlName="imageUrl">
+        <div class="alert alert-danger" *ngIf="movieForm.get('imageUrl').invalid && movieForm.get('imageUrl').touched">Gerekli alan</div>
     </div>
     <div class="mb-3">
         <label for="categoryId" class="form-label">Category</label>
@@ -23,6 +25,7 @@
             <option value="">Seçiniz</option>
             <option *ngFor="let item of categories" [value]="item.id">{{item.name}}</option>
         </select>
+        <div class="alert alert-danger" *ngIf="movieForm.get('categoryId').invalid && movieForm.get('categoryId').touched">Gerekli alan</div>
     </div>
 
     <button type="submit" class="btn btn-primary">Create</button>
