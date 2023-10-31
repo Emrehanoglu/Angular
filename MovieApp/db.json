@@ -50,24 +50,6 @@
       "isPopular": false,
       "datePublished": 1698697011440,
       "categoryId": "6"
-    },
-    {
-      "id": 7,
-      "title": "asdasdasdasd",
-      "description": "asd",
-      "imageUrl": "asd.ss",
-      "isPopular": false,
-      "datePublished": 1698698229093,
-      "categoryId": "2"
-    },
-    {
-      "id": 8,
-      "title": "asdasasdasd",
-      "description": "dasdasd",
-      "imageUrl": "asdasd.asd",
-      "isPopular": false,
-      "datePublished": 1698698248826,
-      "categoryId": "1"
     }
   ],
   "categories": [

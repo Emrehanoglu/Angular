@@ -4,6 +4,7 @@ import { Category } from '../models/category';
 import { MovieService } from '../services/movie.service';
 import { Router } from '@angular/router';
 import { AlertifyService } from '../services/alertify.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-movie-create',
@@ -14,6 +15,7 @@ import { AlertifyService } from '../services/alertify.service';
 export class MovieCreateComponent implements OnInit {
 
   categories : Category[]
+  model : any = {}
 
   constructor(private categoryService:CategoryService, private movieService:MovieService, private router:Router, private alertify:AlertifyService) { }
 
@@ -23,8 +25,10 @@ export class MovieCreateComponent implements OnInit {
     })
   }
 
-  createMovie(title:any,description:any,imageUrl:any,categoryId:any){
-    if(title.value==="" || description.value==="" || imageUrl.value==="" || categoryId.value==="-1"){
+  createMovie(form:NgForm){
+    console.log(this.model)
+    console.log(form)
+    /* if(title.value==="" || description.value==="" || imageUrl.value==="" || categoryId.value==="-1"){
       this.alertify.error("Bir veya birden fazla alan doldurulmamış gözünüyor")
       return
     }
@@ -33,11 +37,11 @@ export class MovieCreateComponent implements OnInit {
       return
     }
     const extensions = ["jpeg","png","jpg"]
-    const extension = imageUrl.value.split('.').pop() /* gelen imageUrl değerini noktadan ayır ve son elemanı ele al(pop: son elemanı secmemızı sağlar) */
+    const extension = imageUrl.value.split('.').pop() 
     if(extensions.indexOf(extension) === -1){
       this.alertify.error('İmageUrl girişi hatalı, lütfen tekrar deneyiniz')
       return 
-    }
+    } 
     
     const movie = {
       id:0,
@@ -50,8 +54,8 @@ export class MovieCreateComponent implements OnInit {
     }
 
     this.movieService.createMovie(movie).subscribe(data => {
-      this.router.navigate(['/movies']) /* yönlendirme */
-    })
+      this.router.navigate(['/movies'])
+    })*/
   }
 
 }
