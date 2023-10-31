@@ -1,0 +1,7 @@
+.form-control.ng-touched.ng-invalid{ /* inputa dokunulmuş ve validasyona uygun bir değer girilmemiş */
+    border-left: 5px solid #a94442; /* inputun sol tarafı kırmızı olsun */
+}
+
+.form-control.ng-dirty.ng-valid{ /* inputa değer girilmiş ve validasyona uygun */
+    border-left: 5px solid #42A948; /* inputun sol tarafı yeşil olsun */
+}

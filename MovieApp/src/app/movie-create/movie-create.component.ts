@@ -15,7 +15,9 @@ import { NgForm } from '@angular/forms';
 export class MovieCreateComponent implements OnInit {
 
   categories : Category[]
-  model : any = {}
+  model : any = {
+    categoryId: ''
+  }
 
   constructor(private categoryService:CategoryService, private movieService:MovieService, private router:Router, private alertify:AlertifyService) { }
 
@@ -25,9 +27,9 @@ export class MovieCreateComponent implements OnInit {
     })
   }
 
-  createMovie(form:NgForm){
-    console.log(this.model)
-    console.log(form)
+  createMovie(){
+    /* console.log(this.model)
+    console.log(form) */
     /* if(title.value==="" || description.value==="" || imageUrl.value==="" || categoryId.value==="-1"){
       this.alertify.error("Bir veya birden fazla alan doldurulmamış gözünüyor")
       return
@@ -41,21 +43,21 @@ export class MovieCreateComponent implements OnInit {
     if(extensions.indexOf(extension) === -1){
       this.alertify.error('İmageUrl girişi hatalı, lütfen tekrar deneyiniz')
       return 
-    } 
+    } */
     
     const movie = {
       id:0,
-      title: title.value,
-      description : description.value,
-      imageUrl: imageUrl.value,
+      title: this.model.title,
+      description : this.model.description,
+      imageUrl: this.model.imageUrl,
       isPopular: false,
       datePublished: new Date().getTime(),
-      categoryId: categoryId.value
+      categoryId: this.model.categoryId
     }
 
     this.movieService.createMovie(movie).subscribe(data => {
       this.router.navigate(['/movies'])
-    })*/
+    })
   }
 
 }
