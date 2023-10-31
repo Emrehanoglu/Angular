@@ -4,7 +4,7 @@ import { Category } from '../models/category';
 import { MovieService } from '../services/movie.service';
 import { Router } from '@angular/router';
 import { AlertifyService } from '../services/alertify.service';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-movie-create',
@@ -27,24 +27,23 @@ export class MovieCreateComponent implements OnInit {
     })
   }
 
-  createMovie(){
-    /* console.log(this.model)
-    console.log(form) */
-    /* if(title.value==="" || description.value==="" || imageUrl.value==="" || categoryId.value==="-1"){
-      this.alertify.error("Bir veya birden fazla alan doldurulmamış gözünüyor")
-      return
-    }
-    if(title.value.length < 10){
-      this.alertify.error("Title en az 10 karakterden oluşmalıdır")
-      return
-    }
-    const extensions = ["jpeg","png","jpg"]
-    const extension = imageUrl.value.split('.').pop() 
-    if(extensions.indexOf(extension) === -1){
-      this.alertify.error('İmageUrl girişi hatalı, lütfen tekrar deneyiniz')
-      return 
-    } */
-    
+  movieForm = new FormGroup({
+    title: new FormControl('film adı'),
+    description: new FormControl('acıklama'),
+    imageUrl: new FormControl('1.jpeg'),
+    categoryId: new FormControl('1')
+  })  
+
+  clearForm(){
+    this.movieForm.patchValue({
+      title: '',
+      description: '',
+      imageUrl: '',
+      categoryId: ''
+    })
+  }
+
+  createMovie(){    
     const movie = {
       id:0,
       title: this.model.title,
