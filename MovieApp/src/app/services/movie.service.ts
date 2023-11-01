@@ -14,16 +14,19 @@ export class MovieService{
     constructor(private http:HttpClient){}
 
     getMovies(categorId:number) : Observable<Movie[]>{
-        let newUrl = this.url_firebase + 'movies.json'
-        if(categorId){
-            newUrl += '?categoryId=' + categorId
-        }        
-        return this.http.get<Movie[]>(newUrl).pipe(
+        return this.http.get<Movie[]>(this.url_firebase + "movies.json").pipe(
             map(response => { /* map ile bana gelen objeyi manipüle edeceğim */
                 const movies: Movie[] = []
 
                 for(const key in response){
-                    movies.push({...response[key], id:key}) 
+                    if(categorId){ //bir categoryId gelmişse
+                        if(categorId === response[key].categoryId){
+                            /* seçtiğim kategori ile firebase 'den bana dönen filmler içerisindeki kategorilerden uyuşan varsa */
+                            movies.push({...response[key], id:key}) 
+                        }
+                    } else{
+                        movies.push({...response[key], id:key})
+                    }                     
                     /* 
                         ...response[key] şu anlama geliyor, bana gelen respone içerisindeki elemanları yine aynı şekilde al, fakat 
                         ikinci parametre id 'ye farklı bir değer ataması yapacağımı söylüyorum.  
@@ -34,8 +37,8 @@ export class MovieService{
         )
     }
 
-    getMovieById(movieId:number):Observable<Movie>{
-        return this.http.get<Movie>(this.url + '/' + movieId)
+    getMovieById(movieId:string):Observable<Movie>{
+        return this.http.get<Movie>(this.url_firebase + 'movies/' + movieId + '.json')
     } 
 
     createMovie(movie:Movie): Observable<Movie>{
