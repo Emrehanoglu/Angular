@@ -46,12 +46,12 @@ export class MovieCreateComponent implements OnInit {
   createMovie(){    
     const movie = {
       id:0,
-      title: this.model.title,
-      description : this.model.description,
-      imageUrl: this.model.imageUrl,
+      title: this.movieForm.value.title,
+      description : this.movieForm.value.description,
+      imageUrl: this.movieForm.value.imageUrl,
       isPopular: false,
       datePublished: new Date().getTime(),
-      categoryId: this.model.categoryId
+      categoryId: this.movieForm.value.categoryId
     }
 
     this.movieService.createMovie(movie).subscribe(data => {

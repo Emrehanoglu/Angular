@@ -8,6 +8,7 @@ import { Movie } from "../models/movie"
 export class MovieService{
 
     url = 'http://localhost:3000/movies'
+    url_firebase = 'https://angular-movie-app-c3aaf-default-rtdb.firebaseio.com'
 
     constructor(private http:HttpClient){}
 
@@ -30,6 +31,6 @@ export class MovieService{
                 'Authorization':'Token' /* gönderdiğim token bilgisine göre sayfa bazlı yetkilendirme yapabiliyorum bu şekilde */
             })
         }
-        return this.http.post<Movie>(this.url, movie, httpOptions) /* 3. parametre yetkilendirmede kullanılıyor */
+        return this.http.post<Movie>(this.url_firebase + '/movies.json', movie, httpOptions) /* 3. parametre yetkilendirmede kullanılıyor */
     }
 }
