@@ -5,6 +5,7 @@ import { MoviesComponent } from './movies/movies.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { MovieCreateComponent } from './movie-create/movie-create.component';
 import { CategoryCreateComponent } from './category-create/category-create.component';
+import { AuthComponent } from './auth/auth.component';
 
 const routes:Routes = [ /* burada url path lerimi tanımlıyorum, hangi path gelirse hangi componente gitsin ve oradaki html kodları ile önyüzde gosterilsin */
   {path:'movies', component:MoviesComponent}, /* 4200(projenın ayaga kalktığı standart port) portu çağırılırsa movies.component.ts 'e gitsin */
@@ -14,7 +15,8 @@ const routes:Routes = [ /* burada url path lerimi tanımlıyorum, hangi path gel
   
   {path: 'movies/create', component:MovieCreateComponent},
   {path: 'categories/create', component:CategoryCreateComponent},
-  {path: 'movies/:movieId', component:MovieDetailsComponent}
+  {path: 'movies/:movieId', component:MovieDetailsComponent},
+  {path: 'auth', component:AuthComponent}
 ]
 
 @NgModule({
