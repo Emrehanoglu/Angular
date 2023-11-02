@@ -2,17 +2,19 @@
     Bilinmeyen bir hata oluştu.
 </div>
 
-<div *ngIf="movies.length>0; else no_movies">
-    <h1>{{ title }}</h1>
+<div *ngIf="!loading">
+    <div *ngIf="movies.length>0; else no_movies">
+        <h1>{{ title }}</h1>
 
-    <div class="alert alert-success">{{filteredMovies.length}} adet film bulundu.</div>
+        <div class="alert alert-success">{{filteredMovies.length}} adet film bulundu.</div>
 
-    <div class="mb-3">
-        <input type="text" class="form-control" [(ngModel)]="filterText" (ngModelChange)="onInputChange()" placeholder="Search...">
-        <small class="text-muted" *ngIf="filterText > ''">Aradığınız kelime : {{filterText}}</small>
+        <div class="mb-3">
+            <input type="text" class="form-control" [(ngModel)]="filterText" (ngModelChange)="onInputChange()" placeholder="Search...">
+            <small class="text-muted" *ngIf="filterText > ''">Aradığınız kelime : {{filterText}}</small>
+        </div>
+
+        <ng-template [ngTemplateOutlet]="movieList1"></ng-template> <!-- template yapısı cağırma yöntemidir. -->
     </div>
-
-    <ng-template [ngTemplateOutlet]="movieList1"></ng-template> <!-- template yapısı cağırma yöntemidir. -->
 </div>
 
 <ng-template #no_movies> 
@@ -42,3 +44,7 @@
         </div>
     </div>
 </ng-template>
+
+<div *ngIf="loading" class="spinner-border text-success" role="status">
+    <span class="visually-hidden">Loading...</span>
+</div>

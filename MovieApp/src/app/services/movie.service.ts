@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http"
 import {Injectable} from "@angular/core"
 import { Observable } from "rxjs"
 import { Movie } from "../models/movie"
-import { catchError, map, tap } from "rxjs/operators";
+import { catchError, delay, map, tap } from "rxjs/operators";
 
 @Injectable() /* bu service 'i kullanacağım componentin ctor 'unda dahil edip kullanabilmem için */
 
@@ -33,12 +33,15 @@ export class MovieService{
                     */
                 }
                 return movies
-            })
+            }),
+            delay(500)
         )
     }
 
     getMovieById(movieId:string):Observable<Movie>{
-        return this.http.get<Movie>(this.url_firebase + 'movies/' + movieId + '.json')
+        return this.http.get<Movie>(this.url_firebase + 'movies/' + movieId + '.json').pipe(
+            delay(500)
+        )
     } 
 
     createMovie(movie:Movie): Observable<Movie>{

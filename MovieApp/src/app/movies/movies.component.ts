@@ -20,6 +20,7 @@ export class MoviesComponent implements OnInit {
 
   filterText:string ="";
   errorMessage:any 
+  loading:boolean=false
 
   constructor(private alertify:AlertifyService, private movieService:MovieService, private activatedRoute:ActivatedRoute) { 
     /* this.movieRepository = new MovieRepository()
@@ -30,10 +31,16 @@ export class MoviesComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
+      this.loading=true /* film bilgilerini servisten almaya gitmeden önce ekranda gosterilmeye başlasın */
+
       this.movieService.getMovies(params["categoryId"]).subscribe(data => {
         this.movies = data
         this.filteredMovies = this.movies
-      },error => this.errorMessage = error)
+        this.loading=false /* servisten bilgileri alıp geldikten sonra artık gösterilmesin */
+      },error => {
+        this.errorMessage = error
+        this.loading=false
+      })
     })    
   }
 
