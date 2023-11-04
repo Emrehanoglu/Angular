@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
+import { Observable } from 'rxjs';
+import { AuthResponse } from '../models/AuthResponse';
 
 @Component({
   selector: 'app-auth',
@@ -10,6 +12,7 @@ import { AuthService } from '../services/auth.service';
 export class AuthComponent implements OnInit {
 
   isLoginMode:boolean=true
+  loading:boolean=false
 
   constructor(private authService:AuthService) { }
 
@@ -22,18 +25,25 @@ export class AuthComponent implements OnInit {
 
   onSubmit(form:NgForm){
     if(form.invalid) {return} else{
-
+      const email = form.value.email
+      const password = form.value.password      
+      let authResponse: Observable<AuthResponse>
+      this.loading = true
       if(this.isLoginMode){
-        console.log('login mode...')
+        authResponse = this.authService.login(email,password)
       }else{ /* register butonu ekranda olduğu zaman bu kodlar çalışmalı */
-        const email = form.value.email
-        const password = form.value.password
-        this.authService.signUp(email,password).subscribe(response => {
-          console.log(response) /* bu noktada kayıt olma işlemi gerçekleşti burada kayıt olan kullanıcının bilgilerini görebilirim. */
-        },err => { /* service hatalı dönerse err bilgisini yakala */
-          console.log(err)
-        })
+        authResponse = this.authService.signUp(email,password)
       }
+
+      authResponse.subscribe(response => {
+        console.log(response)
+        this.loading = false
+      },err => {
+        this.loading = false
+        console.log(err)
+      })
+
+      form.reset() /* form üzerindeki inputları sıfırla */
     }
   }
 }

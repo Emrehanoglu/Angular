@@ -1,24 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
-interface AuthResponse{ /* http sonucunda bana döncek olan bilgilerin şablonu */
-  idToken:string,
-  email:string,
-  refreshToken:string,
-  expiresIn:string,
-  localId:string
-}
+import { AuthResponse } from '../models/AuthResponse';
 
 @Injectable({
   providedIn: 'root' /* root sayesinde service global tanımlanmış olacak */
 })
 export class AuthService {
-  url ='https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyC6b9NVM7YkhAkjVu5cJ5YkI1LU4WmikP4'
+  api_key ='AIzaSyC6b9NVM7YkhAkjVu5cJ5YkI1LU4WmikP4'
 
   constructor(private http:HttpClient) { }
 
   signUp(email:string,password:string){
-    return this.http.post<AuthResponse>(this.url,{
+    return this.http.post<AuthResponse>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + this.api_key,{
+      email:email,
+      password:password,
+      returnSecureToken:true /* true gönderilmeli. Firebase sitesinde bu bilgi var zaten, böyle gönderilmeli diyor. */
+    })
+  }
+  login(email:string,password:string){
+    return this.http.post<AuthResponse>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' + this.api_key,{
       email:email,
       password:password,
       returnSecureToken:true /* true gönderilmeli. Firebase sitesinde bu bilgi var zaten, böyle gönderilmeli diyor. */

@@ -1,4 +1,4 @@
-<form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+<form *ngIf="!loading" #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
     <div class="mb-3">
         <label for="email" class="form-label">Email</label>
         <input type="email" required email ngModel name="email" id="email" class="form-control">
@@ -14,3 +14,7 @@
         Toggle to {{isLoginMode ? 'Register' : 'Login'}}
     </button> <!-- click eventi ile isLoginMode değerini değiştirebiliyor olacağım -->
 </form>
+
+<div *ngIf="loading" class="spinner-border text-success" role="status">
+    <span class="visually-hidden">Loading...</span>
+</div>
