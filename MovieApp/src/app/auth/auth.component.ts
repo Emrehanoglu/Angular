@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Observable } from 'rxjs';
 import { AuthResponse } from '../models/AuthResponse';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-auth',
@@ -13,6 +14,7 @@ export class AuthComponent implements OnInit {
 
   isLoginMode:boolean=true
   loading:boolean=false
+  error:string /* kullanıcıya göstereceğim hata mesajını tutacak */
 
   constructor(private authService:AuthService) { }
 
@@ -38,7 +40,17 @@ export class AuthComponent implements OnInit {
       authResponse.subscribe(response => {
         console.log(response)
         this.loading = false
-      },err => {
+      },(err:HttpErrorResponse) => {
+        if(err.error.error){
+          switch(err.error.error.message){
+            case "EMAIL_EXISTS":
+              this.error = 'Bu email adresi kullanılmış'
+              break
+            case "INVALID_LOGIN_CREDENTIALS":
+              this.error = 'Email veya Password bilgisi hatalı'
+              break
+          }
+        }
         this.loading = false
         console.log(err)
       })
