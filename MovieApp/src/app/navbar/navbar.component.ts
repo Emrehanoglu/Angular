@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../models/category';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,8 +9,14 @@ import { Category } from '../models/category';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  isAuthenticated : boolean = false
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.authService.user.subscribe(user => {
+      this.isAuthenticated = !!user 
+      /* user bilgisi null değilse false dönsün, 
+      bu ifadenin de değilini alırsam true olur ve isAuthenticated true olmus olur */
+    })
   }
 }
