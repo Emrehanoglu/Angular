@@ -3,14 +3,15 @@ import { Injectable } from '@angular/core';
 import { AuthResponse } from '../models/AuthResponse';
 import { tap } from 'rxjs/operators';
 import { User } from '../models/user';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root' /* root sayesinde service global tanımlanmış olacak */
 })
 export class AuthService {
   api_key ='AIzaSyC6b9NVM7YkhAkjVu5cJ5YkI1LU4WmikP4'
-  user = new Subject<User>() /* subject ' de bir observable nesnedir, daha özelleştirilmiş halidir. */
+  /* user = new Subject<User>() */ /* subject ' de bir observable nesnedir, daha özelleştirilmiş halidir. */
+  user = new BehaviorSubject<User>(null) 
 
   constructor(private http:HttpClient) { }
 
