@@ -1,0 +1,25 @@
+.backdrop{
+    position: fixed; /* zeminin her yerini backdrop formatına konumlandıracağım */
+    top: 0; /* ekranın üst 0. indexi */
+    left: 0; /* ekranın sol 0. indexi */
+    width: 100vw; /* yatayda %100 ünü kapla */
+    height: 100vh; /* dikeyde %100 ünü kapla */
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 50; /* ekran üzerinde eklenen yani z eksenın de eklenmiş olan message-box 'ı daha belirgin yapacak */
+}
+
+.message-box{
+    position: fixed; /* konumlandırcağım demek oluyor, aşağıda konum bilgileri verilecek */
+    top: 20vh; /* yukarıdan 20 lik bir alan boşluk bırakılacak */
+    left: 30vw; /* yatayda soldan ve sağdan 30+30=60 lık bir alan boşluk olacak */
+    width: 40vw; /* yatayda geriye kalan 40 lık alan message-box'a ait olacak */
+    padding: 20px; /* box içerisindeki elemanlar ortalanacak */
+    background: white; /* beyaz bir zemin */
+    z-index: 100; /* box' a göre daha belirgin olması lazım bu yüzden 100 verdim */
+    border-radius: 5px; /* box kenarlarını 5px lik yuvarladım */
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3); /* gölgelendirme olsun */
+}
+
+.alert-buttons{
+    text-align: right;
+}

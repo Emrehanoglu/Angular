@@ -49,4 +49,7 @@ export class AuthComponent implements OnInit {
       form.reset() /* form üzerindeki inputları sıfırla */
     }
   }
+  closeDialog(){
+    this.error = null
+  }
 }

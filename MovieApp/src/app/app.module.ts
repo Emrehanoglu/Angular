@@ -19,6 +19,8 @@ import { CategoryCreateComponent } from './category-create/category-create.compo
 import { AuthComponent } from './auth/auth.component';
 import { ErrorInterceptor } from './services/error.interceptor';
 import { AuthInterceptor } from './services/auth.interceptor';
+import { AlertComponent } from './shared/alert/alert.component';
+import { LoadingComponent } from './shared/loading/loading.component';
 
 @NgModule({
   declarations: [ //components
@@ -33,7 +35,9 @@ import { AuthInterceptor } from './services/auth.interceptor';
     MovieFilterPipe,
     MovieCreateComponent,
     CategoryCreateComponent,
-    AuthComponent
+    AuthComponent,
+    AlertComponent,
+    LoadingComponent
   ],
   imports: [  //modules
     BrowserModule,

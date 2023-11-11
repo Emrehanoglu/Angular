@@ -8,8 +8,8 @@
             <span class="visually-hidden">Loading...</span>
         </div>
         <!-- <app-movies></app-movies>  -->
-        <div class="alert alert-danger" *ngIf="errorMessage"> <!-- errorMessage setlenmişse -->
-            Bilinmeyen bir hata oluştu.
+        <div class="alert alert-danger" *ngIf="errorMessage">
+            {{errorMessage}}
         </div>
 
         <div *ngIf="!loading">

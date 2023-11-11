@@ -1,0 +1,8 @@
+<div class="backdrop"></div> <!-- backdrop : arka tarafı koyu bir zemin oluşturur -->
+
+<div class="message-box">
+    <p>{{message}}</p> <!-- message : dışarıdan göndereceğim bir parametre, bunu da alert.component.ts içerisinde tanımladım. -->
+    <div class="alert-buttons">
+        <button class="btn btn-primary" (click)="onClose()">Close</button>
+    </div>
+</div>
