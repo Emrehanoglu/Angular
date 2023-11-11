@@ -4,6 +4,7 @@ import { AuthResponse } from '../models/AuthResponse';
 import { tap } from 'rxjs/operators';
 import { User } from '../models/user';
 import { BehaviorSubject, Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root' /* root sayesinde service global tanımlanmış olacak */
@@ -13,7 +14,7 @@ export class AuthService {
   /* user = new Subject<User>() */ /* subject ' de bir observable nesnedir, daha özelleştirilmiş halidir. */
   user = new BehaviorSubject<User>(null) 
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private route:Router) { }
 
   signUp(email:string,password:string){
     return this.http.post<AuthResponse>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + this.api_key,{
@@ -46,5 +47,9 @@ export class AuthService {
         datayı alıp inceliyoruz orada, gözlemliyoruz. */
       })
     )
+  }
+  logout(){
+    this.user.next(null)
+    this.route.navigate(['/auth'])
   }
 }
