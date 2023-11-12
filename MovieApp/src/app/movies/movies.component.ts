@@ -18,6 +18,7 @@ export class MoviesComponent implements OnInit {
   popularMovies : Movie[] =[]  
   filteredMovies: Movie[] = []
   userId: string
+  movieList:string[] = []
   /* movieRepository: MovieRepository */
 
   filterText:string ="";
@@ -35,19 +36,27 @@ export class MoviesComponent implements OnInit {
   ngOnInit(): void {
     this.authService.user.subscribe(user => {
       this.userId = user.id
-    })
-    this.activatedRoute.params.subscribe(params => {
-      this.loading=true /* film bilgilerini servisten almaya gitmeden önce ekranda gosterilmeye başlasın */
 
-      this.movieService.getMovies(params["categoryId"]).subscribe(data => {
-        this.movies = data
-        this.filteredMovies = this.movies
-        this.loading=false /* servisten bilgileri alıp geldikten sonra artık gösterilmesin */
-      },error => {
-        this.errorMessage = error
-        this.loading=false
-      })
+      this.activatedRoute.params.subscribe(params => {
+        this.loading=true /* film bilgilerini servisten almaya gitmeden önce ekranda gosterilmeye başlasın */
+  
+        this.movieService.getMovies(params["categoryId"]).subscribe(data => {
+          this.movies = data
+          this.filteredMovies = this.movies
+          this.movieService.getMyList(this.userId).subscribe(data => {
+            this.movieList = data
+          })
+          this.loading=false /* servisten bilgileri alıp geldikten sonra artık gösterilmesin */
+        },error => {
+          this.errorMessage = error
+          this.loading=false
+        })
+      })    
     })    
+  }
+
+  getButtonState(movie:Movie){
+    return this.movieList.findIndex(m => m === movie.id) > -1 /* true ya da false donmesi için -1 den büyük mü diye soruyorum */
   }
 
   onInputChange() {

@@ -53,6 +53,18 @@ export class MovieService{
         )
     }
 
+    getMyList(userId:string):Observable<string[]>{
+        return this.http.get<string[]>(this.url_firebase + "users/" + userId + "/list.json").pipe(
+            map(response => {
+               const movies : string[] = []
+               for(let key in response){
+                movies.push(key)
+               }
+               return movies
+            })
+        )
+    }
+
     getMovieById(movieId:string):Observable<Movie>{
         return this.http.get<Movie>(this.url_firebase + 'movies/' + movieId + '.json').pipe(
             delay(500)
