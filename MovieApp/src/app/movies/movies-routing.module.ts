@@ -7,7 +7,7 @@ import { MovieDetailsComponent } from "./movie-details/movie-details.component";
 
 const routes : Routes = [
     {path:'movies', component:MoviesComponent, canActivate:[AuthGuard]}, /* 4200(projenın ayaga kalktığı standart port) portu çağırılırsa movies.component.ts 'e gitsin */
-    {path: '', redirectTo:'movies',pathMatch:'full'}, /* url üzerinden bir şey yazılmadan gidilmeye calısırsa yıne movies 'e yonlendır */
+    
     {path: 'movies/category/:categoryId', component:MoviesComponent, canActivate:[AuthGuard]},  /* göndermiş olduğum id bilgisine göre movies.component.ts içerisinde filtreleme yapacağım 
                                                                             id bilgisinide category.component.html içerisinde routerLink ile vereceğim*/
     
