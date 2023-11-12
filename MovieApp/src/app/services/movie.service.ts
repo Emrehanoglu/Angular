@@ -3,6 +3,7 @@ import {Injectable} from "@angular/core"
 import { Observable } from "rxjs"
 import { Movie } from "../models/movie"
 import { catchError, delay, map, tap } from "rxjs/operators";
+import { MyList } from "../models/myList";
 
 @Injectable() /* bu service 'i kullanacağım componentin ctor 'unda dahil edip kullanabilmem için */
 
@@ -35,6 +36,14 @@ export class MovieService{
                 return movies
             }),
             delay(500)
+        )
+    }
+
+    addToMyList(item:MyList) : Observable<MyList>{
+        return this.http.post<MyList>(this.url_firebase + "users/" + item.userId + "/list/" + item.movieId + ".json",{
+            dateAdded: new Date().getTime() /* film eklendiğinde tarih parametresi de olsun */
+        }).pipe(
+            tap(data => console.log(data)) /* gelen datayı console üzerinde okuyalım */
         )
     }
 
