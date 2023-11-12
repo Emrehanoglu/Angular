@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http"
 import {Injectable} from "@angular/core"
 import { Observable } from "rxjs"
-import { Movie } from "./movie"
+import { Movie } from "./movie.model"
 import { catchError, delay, map, tap } from "rxjs/operators";
-import { MyList } from "./myList";
+import { MyList } from "./myList.model";
 
 @Injectable() /* bu service 'i kullanacağım componentin ctor 'unda dahil edip kullanabilmem için */
 

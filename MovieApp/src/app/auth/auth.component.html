@@ -4,7 +4,7 @@
             {{error}}
         </div> -->
 
-        <app-alert *ngIf="error" [message]="error" (close)="closeDialog()"></app-alert>
+        <!-- <app-alert *ngIf="error" [message]="error" (close)="closeDialog()"></app-alert> -->
         
         <form *ngIf="!loading" #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
             <div class="mb-3">

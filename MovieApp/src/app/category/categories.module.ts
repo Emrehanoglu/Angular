@@ -4,7 +4,7 @@ import { CategoryComponent } from "./category.component";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
-import { AuthGuard } from "../guards/auth.guard";
+import { AuthGuard } from "../auth/auth.guard";
 
 @NgModule({
     declarations: [
