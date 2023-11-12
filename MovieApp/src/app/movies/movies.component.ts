@@ -35,6 +35,7 @@ export class MoviesComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.user.subscribe(user => {
+      
       this.userId = user.id
 
       this.activatedRoute.params.subscribe(params => {

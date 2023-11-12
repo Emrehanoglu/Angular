@@ -14,21 +14,21 @@ import { AlertComponent } from './shared/alert/alert.component';
 import { LoadingComponent } from './shared/loading/loading.component';
 import { MoviesModule } from './movies/movies.module';
 import { AuthModule } from './auth/auth.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [ //components
     AppComponent,
     NavbarComponent,
-    FooterComponent,
-    AlertComponent,
-    LoadingComponent
+    FooterComponent
   ],
   imports: [  //modules
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     MoviesModule,
-    AuthModule
+    AuthModule,
+    SharedModule
   ],
   providers: [
     AlertifyService,
