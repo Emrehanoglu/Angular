@@ -66,7 +66,8 @@ export class MoviesComponent implements OnInit {
       $event.target.innerText = 'Listeye Ekle'
       $event.target.classList.remove('btn-danger')
       $event.target.classList.add('btn-primary')
-      this.alertify.error(movie.title + ' listeden çıkarıldı')
+
+      this.movieService.removeFromMyList({userId:this.userId, movieId:movie.id}).subscribe(() => this.alertify.error(movie.title + ' listeden çıkarıldı'))
     }
   }
 }

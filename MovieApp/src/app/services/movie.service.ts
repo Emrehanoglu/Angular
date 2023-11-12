@@ -47,6 +47,12 @@ export class MovieService{
         )
     }
 
+    removeFromMyList(item:MyList):Observable<MyList>{
+        return this.http.delete<MyList>(this.url_firebase + "users/" + item.userId + "/list/" + item.movieId + ".json").pipe(
+            tap(data => console.log(data))
+        )
+    }
+
     getMovieById(movieId:string):Observable<Movie>{
         return this.http.get<Movie>(this.url_firebase + 'movies/' + movieId + '.json').pipe(
             delay(500)
