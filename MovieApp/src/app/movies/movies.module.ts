@@ -8,6 +8,7 @@ import { SummaryPipe } from "./summary.pipe";
 import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MoviesRoutingModule } from "./movies-routing.module";
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
         RouterModule,
         CommonModule,
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+        MoviesRoutingModule
     ],
     exports: [ 
     /* module içerisinde kullanacağım componentler farklı modullerde de 
