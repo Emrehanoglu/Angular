@@ -27,11 +27,9 @@ import { SharedModule } from './shared/shared.module';
     HttpClientModule,
     AppRoutingModule,
     MoviesModule,
-    AuthModule,
     SharedModule
   ],
   providers: [
-    AlertifyService,
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}, /* multi, birden fazla interceptor kullanmak için eklendi */
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}, /* multi, birden fazla interceptor kullanmak için eklendi */
   ],  //services

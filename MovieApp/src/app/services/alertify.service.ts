@@ -2,7 +2,9 @@ import {Injectable} from "@angular/core"
 
 declare let alertify : any
 
-@Injectable() /* 
+@Injectable({
+    providedIn: "root"
+}) /* 
                 Injectable olarak servisi işaretlemek önemli çünkü bunu yaparak ben bu service 'i component içerisinde 
                 kullanacağım demiş oluyorum. İki şekilde service projeye dahil edebilirim. Birinicisi,
                 @Injectable({
