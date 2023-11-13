@@ -3,6 +3,7 @@ import { ModelModule } from "../model/model.module";
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 import { ShopComponent } from "./shop.component";
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
     providers:[], /* service tanımlamaları shopmodule içerisinde yok, modelmodule içerisinde aldığımız için burada ekstra bir tanıma gerek yok */
@@ -11,7 +12,7 @@ import { ShopComponent } from "./shop.component";
         BrowserModule,
         FormsModule
     ],
-    declarations: [ShopComponent],/* module içerisinde component tanımı var ise burada eklenir */
+    declarations: [ShopComponent, NavbarComponent],/* module içerisinde component tanımı var ise burada eklenir */
     exports:[ShopComponent] /* module içerisinde component tanımı var ise buradan dışarıya açılır */
 })
 
