@@ -12,6 +12,8 @@ import { Category } from "../model/category.model";
     `]
 })
 export class ShopComponent{
+    public selectedCategory?:Category
+
     constructor(private productRepository:ProductRepository, private categoryRepository:CategoryRepository){}
 
     get products():Product[]{
@@ -19,5 +21,8 @@ export class ShopComponent{
     }
     get categories():Category[]{
         return this.categoryRepository.getCategories()
+    }
+    changeCategory(newCategory?:Category){
+        this.selectedCategory = newCategory
     }
 }
