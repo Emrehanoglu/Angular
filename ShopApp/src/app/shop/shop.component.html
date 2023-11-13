@@ -1,1 +1,38 @@
 <navbar></navbar>
+
+<div class="container pt-100 mb-5">
+    <div class="row">
+        <div class="col-3"> <!-- 3 lük kısımda menü olacak -->
+            <div class="list-group">
+                <a href="" class="list-group-item list-group-item-action">Kategori 1</a>
+                <a href="" class="list-group-item list-group-item-action">Kategori 2</a>
+                <a href="" class="list-group-item list-group-item-action">Kategori 3</a>
+                <a href="" class="list-group-item list-group-item-action">Kategori 4</a>
+                <a href="" class="list-group-item list-group-item-action">Kategori 5</a>
+            </div>
+        </div>
+        <div class="col-9"> <!-- 9 luk kısımda filmler olacak -->
+            <div class="row">
+                <ng-container *ngFor="let p of products">
+                    <div class="col-md-4"> <!-- her bir film için col-md-4 lük bir alan olusturdum -->
+                        <div class="card mb-3"> <!-- her bir card aşağıdan 3 lük bir bosluk bıraksın -->
+                            <img src="/assets/img/{{p.imageUrl}}" alt="{{p.name}}">
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="">{{p.name}}</a>                                    
+                                </h4>
+                                <small class="text-muted">
+                                    <i class="fas fa-lira-sign"> {{p.price}}</i>
+                                </small>
+                            </div>
+                            <div class="card-footer text-center"><!-- text-center : içindeki yazılar ortalansın -->
+                                <button class="btn btn-outline-primary btn-sm">Details</button> <!-- btn-sm : küçük buton -->
+                                <button class="btn btn-outline-primary btn-sm" style="margin-left: 5px">Add to Cart</button> <!-- ml-3 : soldan 3lük boşluk -->
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>
