@@ -17,7 +17,7 @@ export class ShopComponent{
     constructor(private productRepository:ProductRepository, private categoryRepository:CategoryRepository){}
 
     get products():Product[]{
-        return this.productRepository.getProducts()
+        return this.productRepository.getProducts(this.selectedCategory)
     }
     get categories():Category[]{
         return this.categoryRepository.getCategories()

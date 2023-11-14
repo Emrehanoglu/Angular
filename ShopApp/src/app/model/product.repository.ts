@@ -1,6 +1,7 @@
 import { Injectable, OnInit } from "@angular/core";
 import { Product } from "./product.model";
 import { RestService } from "./rest.service";
+import { Category } from "./category.model";
 
 @Injectable()
 
@@ -18,7 +19,11 @@ products bilgileni almak istemem, yanı herhangi bir yerden metot ile tetiklemed
     getProduct(id:number): Product {
         return this.products.find(x => x.id === id)!
     }
-    getProducts():Product[]{
-        return this.products
+    getProducts(category?:Category):Product[]{
+        if(category){
+            return this.products.filter(p => p.category == category?.name)
+        }else{
+            return this.products
+        }        
     }
 }
