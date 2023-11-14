@@ -28,7 +28,15 @@ export class ShopComponent{
     get categories():Category[]{
         return this.categoryRepository.getCategories()
     }
+    get pageNumbers():number[]{
+        return Array(Math.ceil(this.productRepository.getProducts(this.selectedCategory).length / this.productsPerPage))
+        .fill(0)
+        .map((a,i) => i+1)
+    }
     changeCategory(newCategory?:Category){
         this.selectedCategory = newCategory
+    }
+    changePage(p: number){
+        this.selectedPage = p
     }
 }
