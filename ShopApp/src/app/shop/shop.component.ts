@@ -13,11 +13,17 @@ import { Category } from "../model/category.model";
 })
 export class ShopComponent{
     public selectedCategory?:Category
+    /* sayfalama */
+    public productsPerPage = 3 /* her sayfada bulunacak ürün sayısı */
+    public selectedPage = 1 /* seçili sayfa */
 
     constructor(private productRepository:ProductRepository, private categoryRepository:CategoryRepository){}
 
     get products():Product[]{
+        let index = (this.selectedPage - 1) * this.productsPerPage
         return this.productRepository.getProducts(this.selectedCategory)
+        .slice(index,index + this.productsPerPage)
+        /* slice metodu ile belirtilen 1. parametre numarasından 2. parametre numarasına kadar dizi eleman sayısı döndürecek */
     }
     get categories():Category[]{
         return this.categoryRepository.getCategories()
