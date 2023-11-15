@@ -8,39 +8,36 @@
         <a href="" class="navbar-brand">ShopApp</a>
         <ul class="navbar-nav mr-auto"> <!-- mr-auto : sağdan bir hizalama yapar -->
             <li class="navbar-nav">
-                <a href="" class="nav-link active">Home</a>
+                <a [routerLink]="['/shop']" routerLinkActive="router-link-active"  class="nav-link active">Home</a>
             </li>
             <li class="navbar-nav">
-                <a href="" class="nav-link">Products</a>
+                <a [routerLink]="['/cart']" class="nav-link">Cart</a>
             </li>
             <li class="navbar-nav">
-                <a href="" class="nav-link">Cart</a>
+                <a [routerLink]="['/shop']" class="nav-link">Orders</a>
             </li>
             <li class="navbar-nav">
-                <a href="" class="nav-link">Orders</a>
+                <a [routerLink]="['/shop']" class="nav-link">Add Product</a>
             </li>
             <li class="navbar-nav">
-                <a href="" class="nav-link">Add Product</a>
+                <a [routerLink]="['/shop']" class="nav-link">Admin Products</a>
             </li>
             <li class="navbar-nav">
-                <a href="" class="nav-link">Admin Products</a>
+                <a [routerLink]="['/shop']" class="nav-link">Add Category</a>
             </li>
             <li class="navbar-nav">
-                <a href="" class="nav-link">Add Category</a>
-            </li>
-            <li class="navbar-nav">
-                <a href="" class="nav-link">Categories</a>
+                <a [routerLink]="['/shop']" class="nav-link">Categories</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto"> <!-- ml-auto : soldan bir hizalama yapar -->
             <li class="navbar-nav">
-                <a href="" class="nav-link">Login</a>
+                <button class="nav-link">Login</button>
             </li>
             <li class="navbar-nav">
-                <a href="" class="nav-link">Register</a>
+                <button href="" class="nav-link">Register</button>
             </li>
             <li class="navbar-nav">
-                <a href="" class="nav-link">Logout</a>
+                <button href="" class="nav-link">Logout</button>
             </li>
         </ul>
     </div>

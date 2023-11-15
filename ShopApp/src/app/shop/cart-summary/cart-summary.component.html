@@ -1,0 +1,9 @@
+<div class="alert alert-success">
+    <span *ngIf="cart.itemCount>0">
+        Sepetinizde {{cart.itemCount}} adet ürün var <br>
+        Toplam : {{cart.total}} ₺
+    </span>
+    <span *ngIf="cart.itemCount==0">
+        Sepetinizde ürün bulunmamaktadır.
+    </span>
+</div>
