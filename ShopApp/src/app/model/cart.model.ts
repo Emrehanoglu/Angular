@@ -22,7 +22,7 @@ export class Cart{ /* sepet içerisindeki ürünlerin listesinin bulunacağı cl
     updateQuantity(product:Product, quantity:number){
         let item = this.items.find(item => item.product.id == product.id)
         if(item != undefined){
-            item.quantity += quantity
+            item.quantity = quantity
         }
         this.calculate()
     }

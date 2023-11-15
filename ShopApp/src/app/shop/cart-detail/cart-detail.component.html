@@ -23,10 +23,14 @@
                             </td>
                             <td>{{item.product.name}}</td>
                             <td>{{item.product.price}} ₺</td>
-                            <td>{{item.quantity}}</td>
+                            <td>
+                                <input type="text" class="form-control" [value]="item.quantity"
+                                style="width: 50px;" 
+                                (change)="cart.updateQuantity(item.product,$any($event.target).value)"> <!-- input içerisinde bir değişiklik olursa belirtilen metoda gidecek -->
+                            </td>
                             <td>{{item.quantity! * item.product.price!}} ₺</td>
                             <td><button class="btn btn-danger btn-sm">
-                                <i class="fa fa-times fa-fw"></i> <!-- çarpı ikonu -->
+                                <i (click)="cart.removeItem(item.product.id)" class="fa fa-times fa-fw"></i> <!-- çarpı ikonu -->
                             </button></td>
                         </tr>
                     </tbody>
