@@ -19,7 +19,22 @@
             <div class="row">
                 <div class="col-md-12"> <!-- col-md-12 : 12 lik bir kolon yer kaplayacak -->
                     <div class="alert alert-warning">
-                        {{products.length}} tane ürün bulundu.
+                        <div class="form-inline float-right m-0 p-0"> <!-- kullanıcı sayfa üzerinde istediği kadar ürün görüntüleyebilsin -->
+                            <!-- float-right : dropDown sağa yaslansın -->
+                            <!-- m-0 ve p-0 bootstrap' e özgü class yapıları -->
+                            <select class="form-control-sm" 
+                            [value]="productsPerPage" 
+                            (change)="changePageSize($any($event.target).value)">
+                            <!-- [value]="productsPerPage" ile başlangıcta 3 eleman gelmiş olacak çünkü ts tarafında 3 olarak tanım var -->
+                            <!-- $any($event.target).value ile dropDown dan seçilen değer null olamaz diyoruz -->    
+                                <option value="2">2 tane</option>
+                                <option value="3">3 tane</option>
+                                <option value="4">4 tane</option>
+                                <option value="6">6 tane</option>
+                                <option value="8">8 tane</option>
+                            </select>
+                        </div>
+                        {{selectedProducts.length}} tane ürün bulundu.
                     </div>
                 </div>
                 <ng-container *ngFor="let p of products">

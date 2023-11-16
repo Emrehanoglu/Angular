@@ -15,13 +15,17 @@ export class ShopComponent{
     /* sayfalama */
     public productsPerPage = 3 /* her sayfada bulunacak ürün sayısı */
     public selectedPage = 1 /* seçili sayfa */
+    public selectedProducts:Product[] = []
 
     constructor(private productRepository:ProductRepository, private categoryRepository:CategoryRepository,
                 private cart:Cart, private router: Router){}
 
     get products():Product[]{
         let index = (this.selectedPage - 1) * this.productsPerPage
-        return this.productRepository.getProducts(this.selectedCategory)
+
+        this.selectedProducts = this.productRepository.getProducts(this.selectedCategory)
+
+        return this.selectedProducts
         .slice(index,index + this.productsPerPage)
         /* slice metodu ile belirtilen 1. parametre numarasından 2. parametre numarasına kadar dizi eleman sayısı döndürecek */
     }
@@ -42,5 +46,9 @@ export class ShopComponent{
     addProductToCart(product:Product){
         this.cart.addItem(product)
         this.router.navigateByUrl('/cart')
+    }
+    changePageSize(size:number){
+        this.productsPerPage = size /* sayfadaki ürün sayısı değişti */
+        this.changePage(1) /* kullanıcı 1. sayfaya dönsün */
     }
 }
