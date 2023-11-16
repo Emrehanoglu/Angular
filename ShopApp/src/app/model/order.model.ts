@@ -9,9 +9,10 @@ export class Order{
     public city: any
     public phone: any
     public email: any
+    public isSent: boolean=false
 
-    public isSent?: boolean=false
     constructor(public cart:Cart){}
+
     clearOrder(){ /* sipariş verildiği anda artık sipariş bilgileri sıfırlanabilir */
         this.id = null
         this.name = null

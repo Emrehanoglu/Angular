@@ -6,7 +6,6 @@ import { MovieComponent } from "./movie/movie.component";
 import { MoviesComponent } from "./movies.component";
 import { SummaryPipe } from "./summary.pipe";
 import { RouterModule } from "@angular/router";
-import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MoviesRoutingModule } from "./movies-routing.module";
 import { CategoriesModule } from "../category/categories.module";
