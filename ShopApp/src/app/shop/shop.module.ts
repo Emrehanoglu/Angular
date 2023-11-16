@@ -8,6 +8,8 @@ import { CartSummaryComponent } from './cart-summary/cart-summary.component';
 import { CartDetailComponent } from './cart-detail/cart-detail.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { RouterModule } from "@angular/router";
+import { ProductListComponent } from './product-list/product-list.component';
+import { CategoryListComponent } from './category-list/category-list.component';
 
 @NgModule({
     providers:[], /* service tanımlamaları shopmodule içerisinde yok, modelmodule içerisinde aldığımız için burada ekstra bir tanıma gerek yok */
@@ -17,7 +19,7 @@ import { RouterModule } from "@angular/router";
         FormsModule,
         RouterModule
     ],
-    declarations: [ShopComponent, NavbarComponent, CartSummaryComponent, CartDetailComponent, CheckoutComponent],/* module içerisinde component tanımı var ise burada eklenir */
+    declarations: [ShopComponent, NavbarComponent, CartSummaryComponent, CartDetailComponent, CheckoutComponent, ProductListComponent, CategoryListComponent],/* module içerisinde component tanımı var ise burada eklenir */
     exports:[ShopComponent,CartDetailComponent, CheckoutComponent] /* module içerisinde component tanımı var ise buradan dışarıya açılır */
 })
 

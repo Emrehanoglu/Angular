@@ -5,6 +5,7 @@ import { Product } from "../model/product.model";
 import { Category } from "../model/category.model";
 import { Cart } from "../model/cart.model";
 import { Router } from "@angular/router";
+import { ChangeDetectorRef  } from '@angular/core';
 
 @Component({
     selector:'shop',
@@ -17,9 +18,11 @@ export class ShopComponent{
     public selectedPage = 1 /* seçili sayfa */
     public selectedProducts:Product[] = []
 
-    constructor(private productRepository:ProductRepository, private categoryRepository:CategoryRepository,
-                private cart:Cart, private router: Router){}
-
+    constructor(private productRepository:ProductRepository,private  changeDetector: ChangeDetectorRef ){}
+        
+    ngAfterContentChecked(): void  {
+        this.changeDetector.detectChanges();
+    } 
     get products():Product[]{
         let index = (this.selectedPage - 1) * this.productsPerPage
 
@@ -29,26 +32,19 @@ export class ShopComponent{
         .slice(index,index + this.productsPerPage)
         /* slice metodu ile belirtilen 1. parametre numarasından 2. parametre numarasına kadar dizi eleman sayısı döndürecek */
     }
-    get categories():Category[]{
-        return this.categoryRepository.getCategories()
-    }
     get pageNumbers():number[]{
         return Array(Math.ceil(this.productRepository.getProducts(this.selectedCategory).length / this.productsPerPage))
         .fill(0)
         .map((a,i) => i+1)
     }
-    changeCategory(newCategory?:Category){
-        this.selectedCategory = newCategory
-    }
     changePage(p: number){
         this.selectedPage = p
-    }
-    addProductToCart(product:Product){
-        this.cart.addItem(product)
-        this.router.navigateByUrl('/cart')
     }
     changePageSize(size:number){
         this.productsPerPage = size /* sayfadaki ürün sayısı değişti */
         this.changePage(1) /* kullanıcı 1. sayfaya dönsün */
+    }
+    getCategory(category:Category){
+        this.selectedCategory = category
     }
 }
