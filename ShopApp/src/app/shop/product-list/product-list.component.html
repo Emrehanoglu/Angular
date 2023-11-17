@@ -1,3 +1,19 @@
+<div class="row border m-0 p-3 mb-4" *ngIf="selectedProduct">
+    <div class="col-md-2">
+        <img src="/assets/img/{{selectedProduct.imageUrl}}" style="width: 100px; height: 110px;">
+    </div>
+    <div class="col-md-10">
+        <h5 class="card-title">
+            {{selectedProduct.name}}
+        </h5>
+        <p class="card-text">
+            {{selectedProduct.description}}
+        </p>
+        <button (click)="hideDetail()" class="btn btn-danger btn-sm">Seçimi İptal Et</button>
+        <button (click)="addProductToCart(selectedProduct)" class="btn btn-primary btn-sm" style="margin-left: 5px">Add to Cart</button> <!-- ml-3 : soldan 3lük boşluk -->     
+    </div>    
+</div>
+
 <div class="row">
     <div class="col-md-4" *ngFor="let p of products"> <!-- her bir film için col-md-4 lük bir alan olusturdum -->
         <div class="card mb-3"> <!-- her bir card aşağıdan 3 lük bir bosluk bıraksın -->
@@ -11,7 +27,7 @@
                 </small>
             </div>
             <div class="card-footer text-center"><!-- text-center : içindeki yazılar ortalansın -->
-                <button class="btn btn-outline-primary btn-sm">Details</button> <!-- btn-sm : küçük buton -->
+                <button (click)="displayDetails(p)" class="btn btn-outline-primary btn-sm">Details</button> <!-- btn-sm : küçük buton -->
                 <button (click)="addProductToCart(p)" class="btn btn-outline-primary btn-sm" style="margin-left: 5px">Add to Cart</button> <!-- ml-3 : soldan 3lük boşluk -->
             </div>
         </div>
