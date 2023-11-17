@@ -8,7 +8,7 @@
         <a href="" class="navbar-brand">ShopApp</a>
         <ul class="navbar-nav mr-auto"> <!-- mr-auto : sağdan bir hizalama yapar -->
             <li class="navbar-nav">
-                <a [routerLink]="['/shop']" routerLinkActive="router-link-active"  class="nav-link active">Home</a>
+                <a [routerLink]="['/shop']" class="nav-link active">Home</a>
             </li>
             <li class="navbar-nav">
                 <a [routerLink]="['/cart']" class="nav-link">Cart</a>
@@ -17,27 +17,18 @@
                 <a [routerLink]="['/shop']" class="nav-link">Orders</a>
             </li>
             <li class="navbar-nav">
-                <a [routerLink]="['/shop']" class="nav-link">Add Product</a>
-            </li>
-            <li class="navbar-nav">
-                <a [routerLink]="['/shop']" class="nav-link">Admin Products</a>
-            </li>
-            <li class="navbar-nav">
-                <a [routerLink]="['/shop']" class="nav-link">Add Category</a>
-            </li>
-            <li class="navbar-nav">
-                <a [routerLink]="['/shop']" class="nav-link">Categories</a>
+                <a [routerLink]="['/admin']" class="nav-link">Admin</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto"> <!-- ml-auto : soldan bir hizalama yapar -->
             <li class="navbar-nav">
-                <button class="nav-link">Login</button>
+                <button [routerLink]="['/auth']" class="nav-link">Login</button>
             </li>
             <li class="navbar-nav">
-                <button href="" class="nav-link">Register</button>
+                <button [routerLink]="['/auth']" class="nav-link">Register</button>
             </li>
             <li class="navbar-nav">
-                <button href="" class="nav-link">Logout</button>
+                <button [routerLink]="['/auth']" href="" class="nav-link">Logout</button>
             </li>
         </ul>
     </div>

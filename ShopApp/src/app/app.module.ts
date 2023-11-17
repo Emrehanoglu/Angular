@@ -19,6 +19,7 @@ import { CartDetailComponent } from './shop/cart-detail/cart-detail.component';
       {path:'shop', component: ShopComponent},
       {path:'cart', component: CartDetailComponent},
       {path:'checkout', component: CheckoutComponent},
+      {path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)}, /* kullanıcı admin url sine giderse AdminModule ayağa kalkacak */
       {path:'**', redirectTo: "/shop"} /* kullanıcı yukarıdakiler dışında bir linke gitmeye çalışırsa '/shop' a gitsin o da ShopComponente gidiyor zaten */
     ])
   ],
