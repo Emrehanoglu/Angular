@@ -7,12 +7,14 @@ import { RouterModule } from '@angular/router';
 import { ShopComponent } from './shop/shop.component';
 import { CheckoutComponent } from './shop/checkout/checkout.component';
 import { CartDetailComponent } from './shop/cart-detail/cart-detail.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     ShopModule,
     RouterModule.forRoot([

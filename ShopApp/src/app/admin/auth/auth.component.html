@@ -1,1 +1,18 @@
-<p>auth works!</p>
+
+
+<div class="p-2">
+    <form [formGroup]="checkoutForm" (ngSubmit)="login()">
+        <div class="form-group">
+            <label>Username</label>
+            <input class="form-control" name="username">
+        </div> 
+        <div class="form-group">
+            <label>Password</label>
+            <input class="form-control" name="password">
+        </div>
+        <div class="text-center">
+            <button class="btn btn-secondary" [routerLink]="['/']">Geri dön</button>
+            <button type="submit" class="btn btn-primary ml-2" onclick="login">Giriş yap</button>
+        </div>
+    </form>
+</div>
