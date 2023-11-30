@@ -7,7 +7,7 @@ export class Cart{
     public items:CartItem[]=[]
     public itemCount:number=0
     public totalPrice:number=0
-    addItem(product:Product,quantity:number){
+    addItem(product:Product,quantity:number=1){
         let item = this.items.find(item=>item.product.id==product.id)
         if(item !=undefined){
             item.quantity += quantity
@@ -19,7 +19,7 @@ export class Cart{
     updateQuantity(product:Product,quantity:number){
         let item = this.items.find(item => item.product.id==product.id)
         if(item!=undefined){
-            item.quantity += quantity
+            item.quantity = quantity
         }
         this.calculate()
     }
@@ -35,6 +35,11 @@ export class Cart{
         let item = this.items.findIndex(item => item.product.id==id)
         this.items.splice(item,1)
         this.calculate()
+    }
+    clear(){ /* kullanıcı sepeti boşaltmak isterse */
+    this.items = []
+    this.itemCount = 0
+    this.totalPrice = 0
     }
 }
 

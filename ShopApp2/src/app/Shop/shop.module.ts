@@ -6,15 +6,20 @@ import { ShopComponent } from "./shop.component";
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProductComponent } from './product/product.component';
 import { CategoryComponent } from './category/category.component';
+import { CartSummaryComponent } from './cart-summary/cart-summary.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { CartDetailComponent } from './cart-detail/cart-detail.component';
+import { RouterModule } from "@angular/router";
 
 @NgModule({
     providers:[],
     imports:[
         ModelModule,
         BrowserModule,
-        FormsModule
+        FormsModule,
+        RouterModule
     ],
-    declarations:[ShopComponent, NavbarComponent, ProductComponent, CategoryComponent],
+    declarations:[ShopComponent, NavbarComponent, ProductComponent, CategoryComponent, CartSummaryComponent, CheckoutComponent, CartDetailComponent],
     exports:[ShopComponent]
 })
 export class ShopModule{}

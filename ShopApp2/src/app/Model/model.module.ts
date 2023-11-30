@@ -3,6 +3,9 @@ import { NgModule } from "@angular/core";
 import { RestService } from "./rest.service";
 import { ProductRepository } from "./product.repository";
 import { CategoryRepository } from "./category.repository";
+import { Cart } from "./cart.model";
+import { Order } from "./order.model";
+import { OrderRepository } from "./order.repository";
 
 @NgModule({
     imports:[
@@ -11,7 +14,10 @@ import { CategoryRepository } from "./category.repository";
     providers: [
         RestService,
         ProductRepository,
-        CategoryRepository
+        CategoryRepository,
+        Cart,
+        Order,
+        OrderRepository
     ]
 })
 export class ModelModule{}
