@@ -1,0 +1,21 @@
+<div class="row">
+    <ng-container *ngFor="let p of products">
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <img src="/assets/img/1.jpg" alt="{{p.name}}">
+                <div class="card-body">
+                    <h4 class="card-title text-center">
+                        <a href="">{{p.name}}</a>
+                    </h4>
+                    <small class="text-muted">
+                        <i class="fas fa-lira-sign">{{p.price}}</i>
+                    </small>
+                </div>
+                <div class="card-footer text-center">
+                    <button class="btn btn-outline-primary btn-sm">Detail</button>
+                    <button (click)="addProductToCart(p)" class="btn btn-outline-primary btn-sm" style="margin-left: 5px;">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>

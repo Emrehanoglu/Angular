@@ -10,6 +10,8 @@ import { CartSummaryComponent } from './cart-summary/cart-summary.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { CartDetailComponent } from './cart-detail/cart-detail.component';
 import { RouterModule } from "@angular/router";
+import { ProductListComponent } from './product-list/product-list.component';
+import { CategoryListComponent } from './category-list/category-list.component';
 
 @NgModule({
     providers:[],
@@ -19,7 +21,7 @@ import { RouterModule } from "@angular/router";
         FormsModule,
         RouterModule
     ],
-    declarations:[ShopComponent, NavbarComponent, ProductComponent, CategoryComponent, CartSummaryComponent, CheckoutComponent, CartDetailComponent],
+    declarations:[ShopComponent, NavbarComponent, ProductComponent, CategoryComponent, CartSummaryComponent, CheckoutComponent, CartDetailComponent, ProductListComponent, CategoryListComponent],
     exports:[ShopComponent]
 })
 export class ShopModule{}

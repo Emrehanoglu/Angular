@@ -1,0 +1,7 @@
+<div class="list-group">
+    <a href="#" (click)="changeCategory()" class="list-group-item list-group-item-action"
+    [class.active]="selectedCategory==null">Tüm Kategoriler</a>
+    <a *ngFor="let item of categories" href="#" class="list-group-item list-group-item-action"
+    (click)="changeCategory(item)"
+    [class.active]="item==selectedCategory">{{item.name}}</a>
+</div>
