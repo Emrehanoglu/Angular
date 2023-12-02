@@ -20,6 +20,7 @@ import { CheckoutComponent } from './Shop/checkout/checkout.component';
     RouterModule.forRoot([
       {path:'shop', component:ShopComponent},     
       {path:'checkout', component:CheckoutComponent},     
+      {path: 'admin', loadChildren: () => import('./Admin/admin.module').then(m => m.AdminModule)},
       {path:'cart', component:CartDetailComponent},     
     ])
   ],

@@ -1,3 +1,19 @@
+<div class="row border m-0 p-3 mb-4" *ngIf="selectedProduct">
+    <div class="col-md-2">
+        <img src="/assets/img/{{selectedProduct.imageUrl}}" style="width: 100px; height: 110px;">
+    </div>
+    <div class="col-md-10">
+        <div class="card-title">
+            {{selectedProduct.name}}
+        </div>
+        <div class="card-text">
+            {{selectedProduct.description}}
+        </div>
+        <button (click)="hideDetails()" class="btn btn-outline-primary btn-sm">Seçimi iptal et</button>
+        <button (click)="addProductToCart(selectedProduct)" class="btn btn-primary btn-sm" style="margin-left: 5px">Add to Cart</button>
+    </div>
+</div>
+
 <div class="row">
     <ng-container *ngFor="let p of products">
         <div class="col-md-4">
@@ -12,7 +28,7 @@
                     </small>
                 </div>
                 <div class="card-footer text-center">
-                    <button class="btn btn-outline-primary btn-sm">Detail</button>
+                    <button (click)="displayDetails(p)" class="btn btn-outline-primary btn-sm">Detail</button>
                     <button (click)="addProductToCart(p)" class="btn btn-outline-primary btn-sm" style="margin-left: 5px;">Add to Cart</button>
                 </div>
             </div>

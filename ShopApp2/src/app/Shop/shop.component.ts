@@ -2,9 +2,7 @@ import { Component } from "@angular/core";
 import { Category } from "src/app/Model/category.model";
 import { Product } from "src/app/Model/product.model";
 import { ProductRepository } from "../Model/product.repository";
-import { CategoryRepository } from "../Model/category.repository";
-import { Cart } from "../Model/cart.model";
-import { Router } from "@angular/router";
+import { ChangeDetectorRef  } from '@angular/core';
 
 @Component({
     selector:'shop',
@@ -13,10 +11,15 @@ import { Router } from "@angular/router";
 
 export class ShopComponent{
     public selectedCategory?:Category
-    public productsPerPage:number = 3
-    public selectedPage:number = 1
+    public productsPerPage = 3 /* her sayfada bulunacak ürün sayısı */
+    public selectedPage = 1 /* seçili sayfa */
     public selectedProducts:Product[] = []
-    constructor(private productRepository:ProductRepository){}
+
+    constructor(private productRepository:ProductRepository,private  changeDetector: ChangeDetectorRef ){}
+        
+    ngAfterContentChecked(): void  {
+        this.changeDetector.detectChanges();
+    } 
     get products(): Product[]{
         let index = (this.selectedPage-1)
         this.selectedProducts = this.productRepository.getProducts(this.selectedCategory)

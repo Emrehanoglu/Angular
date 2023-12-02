@@ -10,9 +10,17 @@ import { Product } from 'src/app/Model/product.model';
 })
 export class ProductListComponent implements OnInit {
   @Input() products:Product[]=[]
+  public selectedProduct? : Product | null
   constructor(private cartService:Cart,private router:Router) { }
 
   ngOnInit(): void {
+  }
+  hideDetails(){
+    this.selectedProduct = null
+  }
+
+  displayDetails(product:Product){
+    this.selectedProduct = product
   }
 
   addProductToCart(product:Product){
